@@ -8,3 +8,8 @@
 <p align="center">
 <img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/pms_wipy.jpg" width="800">
 </p>
+
+
+<p align="center">
+<img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/pms_atom.png" width="800">
+</p>
