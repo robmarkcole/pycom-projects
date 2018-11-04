@@ -1,27 +1,9 @@
 # PMS5003
-* Air quality sensor, requires 5V supply so USB power supply.
+* Air quality sensor, requires 5V supply so sensor using USB power supply.
 * Publishes data over UART
-* WIPY connections: P3 (G24) & P4 (G11)
+* WIPY expansion board connections: P3 (G24 & TX) & P4 (RX G11)
 
-To print byte stream, no imports required:
-```python
-import os
-import machine
-import pycom
-import time
-
-# Configure first UART bus to see the communication on the pc
-uart = machine.UART(0, 115200)
-os.dupterm(uart)
-
-# Configure second UART bus on pins P3(TX1) and P4(RX1)
-uart1 = machine.UART(1, baudrate=9600)
-pycom.heartbeat(False)
-
-while True:
-    print(uart1.readline())  # read the response from the Arduino
-    time.sleep(1)
-```
+* To parse the byte stream we use modify the code from https://learn.adafruit.com/pm25-air-quality-sensor/circuitpython-code
 
 <p align="center">
 <img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/pms_wipy.jpg" width="800">
