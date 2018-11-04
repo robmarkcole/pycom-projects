@@ -22,3 +22,7 @@ while True:
     print(uart1.readline())  # read the response from the Arduino
     time.sleep(1)
 ```
+
+<p align="center">
+<img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/pms_wipy.jpg" width="800">
+</p>
