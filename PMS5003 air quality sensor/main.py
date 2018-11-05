@@ -19,7 +19,6 @@ buffer = []
 while True:
     data = uart1.read(32)  # read up to 32 bytes
     if data:
-        print(data)
         data = list(data)
         buffer += data
 
@@ -59,6 +58,6 @@ while True:
     data_dict['particles_25um'] = particles_25um
     data_dict['particles_50um'] = particles_50um
     data_dict['particles_100um'] = particles_100um
-    print(dumps(data_dict)) # publish json
+    print(dumps(data_dict)) # publish json, fix encoding.
 
     buffer = buffer[32:]
