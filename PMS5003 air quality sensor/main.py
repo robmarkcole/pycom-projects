@@ -3,6 +3,7 @@ import machine
 import pycom
 import time
 import struct
+from ujson import dumps
 
 # Configure first UART bus to see the communication on the pc
 uart = machine.UART(0, 115200)
@@ -51,20 +52,13 @@ while True:
         buffer = []
         continue
 
-    print("Concentration Units (standard)")
-    print("---------------------------------------")
-    print("PM 1.0: %d\tPM2.5: %d\tPM10: %d" %
-          (pm10_standard, pm25_standard, pm100_standard))
-    print("Concentration Units (environmental)")
-    print("---------------------------------------")
-    print("PM 1.0: %d\tPM2.5: %d\tPM10: %d" % (pm10_env, pm25_env, pm100_env))
-    print("---------------------------------------")
-    print("Particles > 0.3um / 0.1L air:", particles_03um)
-    print("Particles > 0.5um / 0.1L air:", particles_05um)
-    print("Particles > 1.0um / 0.1L air:", particles_10um)
-    print("Particles > 2.5um / 0.1L air:", particles_25um)
-    print("Particles > 5.0um / 0.1L air:", particles_50um)
-    print("Particles > 10 um / 0.1L air:", particles_100um)
-    print("---------------------------------------")
+    data_dict = {}
+    data_dict['particles_03um'] = particles_03um
+    data_dict['particles_05um'] = particles_05um
+    data_dict['particles_10um'] = particles_10um
+    data_dict['particles_25um'] = particles_25um
+    data_dict['particles_50um'] = particles_50um
+    data_dict['particles_100um'] = particles_100um
+    print(dumps(data_dict)) # publish json
 
     buffer = buffer[32:]
