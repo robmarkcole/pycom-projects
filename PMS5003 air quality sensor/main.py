@@ -9,15 +9,19 @@ from mqtt import MQTTClient
 def settimeout(duration):
    pass
 
-client_id = "wipy"
-broker = "192.168.1.84"
-user = "***"
-password = "***"
+client_id = "unique_id"
+broker = "your_broker_ip"
+user = "xxx"
+password = "xxx"
 port = 1883
 
 client = MQTTClient(client_id=client_id, server=broker, user=user, password=password, port=port)
 client.settimeout = settimeout
-client.connect()
+try:
+    client.connect()
+except Exception as e:
+    print("Unable to connect to MQTT broker")
+    print(e)
 
 # Configure first UART bus to see the communication on the pc
 uart = machine.UART(0, 115200)
