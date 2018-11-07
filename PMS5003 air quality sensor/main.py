@@ -10,12 +10,12 @@ def settimeout(duration):
    pass
 
 client_id = "wipy"
-server = "my_borker_ip"
-user = "mu_user"
-password = "my_pass"
+broker = "192.168.1.84"
+user = "***"
+password = "***"
 port = 1883
 
-client = MQTTClient(client_id=client_id, server=server, user=user, password=password, port=port)
+client = MQTTClient(client_id=client_id, server=broker, user=user, password=password, port=port)
 client.settimeout = settimeout
 client.connect()
 
@@ -75,6 +75,10 @@ while True:
 
     # Print/publish the data
     print(data_json)
-    client.publish("wipy/", data_json)
+    try:
+        client.publish("wipy/", data_json)
+    except Exception as e:
+        print(e)
+        pass
 
     buffer = buffer[32:]
