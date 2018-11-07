@@ -4,6 +4,20 @@ import pycom
 import time
 import struct
 from ujson import dumps
+from mqtt import MQTTClient
+
+def settimeout(duration):
+   pass
+
+client_id = "wipy"
+server = "my_borker_ip"
+user = "mu_user"
+password = "my_pass"
+port = 1883
+
+client = MQTTClient(client_id=client_id, server=server, user=user, password=password, port=port)
+client.settimeout = settimeout
+client.connect()
 
 # Configure first UART bus to see the communication on the pc
 uart = machine.UART(0, 115200)
@@ -13,7 +27,6 @@ os.dupterm(uart)
 uart1 = machine.UART(1, baudrate=9600)
 pycom.heartbeat(False)
 
-print("Starting data reading")
 buffer = []
 
 while True:
@@ -58,6 +71,10 @@ while True:
     data_dict['particles_25um'] = particles_25um
     data_dict['particles_50um'] = particles_50um
     data_dict['particles_100um'] = particles_100um
-    print(dumps(data_dict)) # publish json, fix encoding.
+    data_json = dumps(data_dict)
+
+    # Print/publish the data
+    print(data_json)
+    client.publish("wipy/", data_json)
 
     buffer = buffer[32:]
