@@ -50,7 +50,7 @@ For MQTT broker I am using the Hassio [MQTT Server & Web client](https://github.
 ```
 Note that the addon web UI requires port 1884
 
-In my HA config, to add the pycom board MQTT feed, publishing to port 1883 I have:
+In my HA config, to add the pycom board MQTT feed, using a value_template to break-out the individual readings:
 
 ```yaml
 mqtt:
@@ -60,7 +60,31 @@ mqtt:
   password : xxx
   port : 1883
 
-sensor:
-  - platform: mqtt
-    state_topic: "wipy/"
+  sensor:
+    - platform: mqtt
+      state_topic: "wipy/"
+    - platform: mqtt
+      name: particles_03um
+      state_topic: "wipy/"
+      value_template: "{{ value_json.particles_03um }}"
+    - platform: mqtt
+      name: particles_05um
+      state_topic: "wipy/"
+      value_template: "{{ value_json.particles_05um }}"
+    - platform: mqtt
+      name: particles_10um
+      state_topic: "wipy/"
+      value_template: "{{ value_json.particles_10um }}"
+    - platform: mqtt
+      name: particles_25um
+      state_topic: "wipy/"
+      value_template: "{{ value_json.particles_25um }}"
+    - platform: mqtt
+      name: particles_50um
+      state_topic: "wipy/"
+      value_template: "{{ value_json.particles_50um }}"
+    - platform: mqtt
+      name: particles_100um
+      state_topic: "wipy/"
+      value_template: "{{ value_json.particles_100um }}"
 ```
