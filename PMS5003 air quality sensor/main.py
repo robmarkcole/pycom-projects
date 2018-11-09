@@ -5,12 +5,25 @@ import time
 import struct
 from ujson import dumps
 from mqtt import MQTTClient
+from machine import RTC
 
+# Setpup time
+rtc = RTC()
+try:
+    rtc.ntp_sync("pool.ntp.org")
+    time.sleep(1)
+    print("rtc synced : {}".format(rtc.synced()))
+    print(rtc.now())
+except Exception as e:
+    print(e)
+    print("Unable to fetch current time.")
+
+# Setup MQTT
 def settimeout(duration):
    pass
 
-client_id = "unique_id"
-broker = "your_broker_ip"
+client_id = "wipy"
+broker = "xxx"
 user = "xxx"
 password = "xxx"
 port = 1883
