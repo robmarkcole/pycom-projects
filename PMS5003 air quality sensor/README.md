@@ -1,9 +1,9 @@
 # PMS5003
-* Air quality sensor, requires 5V supply so sensor using USB power supply.
-* Publishes data over UART
-* WIPY expansion board connections: P3 (G24 & TX) & P4 (G11 & RX)
+* Air quality sensor, pick up online for cheap via [Amazon](https://www.amazon.co.uk/iHaospace-PMS5003-Digital-Particle-Detection/dp/B071J5LL8V/ref=sr_1_1?s=electronics&ie=UTF8&qid=1541838268&sr=1-1&keywords=pms5003) or [Ali-express](https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181110002531&SearchText=pms5003).
+* Publishes data over serial (UART) - read data with Wipy on expansion board connections: P3 (G24 & TX) & P4 (G11 & RX)
+* Wipy only optputs 3.3V but sensor requires 5V so power from USB using the GND/5V outputs on a [USB/UART connector](https://www.amazon.co.uk/gp/product/B01CYBHM26/ref=oh_aui_search_detailpage?ie=UTF8&psc=1).
 * Modified the code from https://learn.adafruit.com/pm25-air-quality-sensor/circuitpython-code
-* Important advice: use a unique `client_id` for each device on your MQTT network.
+* Important advice for MQTT: use a unique `client_id` for each device on your MQTT network.
 
 <p align="center">
 <img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/pms_wipy.jpg" width="500">
@@ -101,7 +101,7 @@ mqtt:
 I get good readings with the sensor in the kitchen, below next to the toaster. I'm powering the wipy and PMS5003 from a USB charge pack, which outputs at 5V.
 
 <p align="center">
-<img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/toasting.jpg" width="500">
+<img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/toasting.jpg" width="800">
 </p>
 
 Analytics of the data are shown in [ha_data_analytics.ipynb](https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/ha_data_analytics.ipynb)
