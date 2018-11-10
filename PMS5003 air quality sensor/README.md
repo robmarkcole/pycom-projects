@@ -1,4 +1,7 @@
-# PMS5003
+## Overview
+This project uses an PMS5003 air quality sensor to monitor the air quality about my home. For example, when burning toast many particles are given off, which can be detected with this sensor. The sensor readings are published over MQTT by a micropython board, the Wipy. The readings are ingested into a SQL database by Home-Assistant, and plotted on a live web GUI. The data can be read from the database using my data_detective library, and the data analysed using familiar tools such as Pandas. The sensor/wipy can be run off a USB battery pack, but require wifi to post data. In future I will reproduce [this project](https://kapusta.cc/2018/02/02/air-quality-monitor-revisited/) to replace wifi with Lora or Sigfox, so I can take the sensor out and about.
+
+## PMS5003
 * PMS5003 Air quality sensor, see a teardown and technical info [here](https://aqicn.org/sensor/pms5003-7003/).
 * Pick up online for cheap via [Amazon](https://www.amazon.co.uk/iHaospace-PMS5003-Digital-Particle-Detection/dp/B071J5LL8V/ref=sr_1_1?s=electronics&ie=UTF8&qid=1541838268&sr=1-1&keywords=pms5003) or [Ali-express](https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181110002531&SearchText=pms5003).
 * Publishes data over serial (UART) - read data with Wipy on expansion board connections: P3 (G24 & TX) & P4 (G11 & RX)
