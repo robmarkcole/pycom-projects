@@ -1,5 +1,6 @@
 # PMS5003
-* Air quality sensor, pick up online for cheap via [Amazon](https://www.amazon.co.uk/iHaospace-PMS5003-Digital-Particle-Detection/dp/B071J5LL8V/ref=sr_1_1?s=electronics&ie=UTF8&qid=1541838268&sr=1-1&keywords=pms5003) or [Ali-express](https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181110002531&SearchText=pms5003).
+* PMS5003 Air quality sensor, see a teardown and technical info [here](https://aqicn.org/sensor/pms5003-7003/).
+* Pick up online for cheap via [Amazon](https://www.amazon.co.uk/iHaospace-PMS5003-Digital-Particle-Detection/dp/B071J5LL8V/ref=sr_1_1?s=electronics&ie=UTF8&qid=1541838268&sr=1-1&keywords=pms5003) or [Ali-express](https://www.aliexpress.com/wholesale?catId=0&initiative_id=SB_20181110002531&SearchText=pms5003).
 * Publishes data over serial (UART) - read data with Wipy on expansion board connections: P3 (G24 & TX) & P4 (G11 & RX)
 * Wipy only optputs 3.3V but sensor requires 5V so power from USB using the GND/5V outputs on a [USB/UART connector](https://www.amazon.co.uk/gp/product/B01CYBHM26/ref=oh_aui_search_detailpage?ie=UTF8&psc=1).
 * Modified the code from https://learn.adafruit.com/pm25-air-quality-sensor/circuitpython-code
