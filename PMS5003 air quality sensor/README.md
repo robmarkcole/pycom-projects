@@ -11,7 +11,7 @@
 
 
 <p align="center">
-<img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/pms_atom.png" width="800">
+<img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/pms_atom.png" width="1000">
 </p>
 
 ## Home-Assistant
@@ -98,7 +98,7 @@ mqtt:
 </p>
 
 ## In use in the kitchen
-I get good readings with the sensor in the kitchen, below next to the toaster.
+I get good readings with the sensor in the kitchen, below next to the toaster. I'm powering the wipy and PMS5003 from a USB charge pack, which outputs at 5V.
 
 <p align="center">
 <img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/toasting.jpg" width="500">
