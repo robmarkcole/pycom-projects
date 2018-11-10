@@ -7,29 +7,30 @@ from ujson import dumps
 from mqtt import MQTTClient
 from machine import RTC
 
-# Setpup time
-rtc = RTC()
-try:
-    rtc.ntp_sync("pool.ntp.org")
-    time.sleep(1)
-    print("rtc synced : {}".format(rtc.synced()))
-    print(rtc.now())
-except Exception as e:
-    print(e)
-    print("Unable to fetch current time.")
+## LED
+pycom.heartbeat(False)
+GREEN = 0x001500
+RED = 0x150000
+pycom.rgbled(RED) # the default state.
 
 # Setup MQTT
 def settimeout(duration):
    pass
 
 client_id = "wipy"
-broker = "xxx"
+broker = "192.168.1.84"
 user = "xxx"
 password = "xxx"
 port = 1883
 
-client = MQTTClient(client_id=client_id, server=broker, user=user, password=password, port=port)
+client = MQTTClient(client_id=client_id,
+                    server=broker,
+                    user=user,
+                    password=password,
+                    port=port)
+
 client.settimeout = settimeout
+
 try:
     client.connect()
 except Exception as e:
@@ -39,10 +40,8 @@ except Exception as e:
 # Configure first UART bus to see the communication on the pc
 uart = machine.UART(0, 115200)
 os.dupterm(uart)
-
 # Configure second UART bus on pins P3(TX1) and P4(RX1)
 uart1 = machine.UART(1, baudrate=9600)
-pycom.heartbeat(False)
 
 buffer = []
 
@@ -88,12 +87,16 @@ while True:
     data_dict['particles_25um'] = particles_25um
     data_dict['particles_50um'] = particles_50um
     data_dict['particles_100um'] = particles_100um
-    data_json = dumps(data_dict)
+    data_json = dumps(data_dict) # Get a json string.
 
     # Print/publish the data
     print(data_json)
     try:
         client.publish("wipy/", data_json)
+        pycom.rgbled(GREEN)
+        time.sleep(0.2)
+        pycom.rgbled(RED)
+        time.sleep(2)
     except Exception as e:
         print(e)
         pass
