@@ -7,6 +7,10 @@ from ujson import dumps
 from mqtt import MQTTClient
 from machine import RTC
 
+## Variables
+TIME_BETWEEN_READINGS = 3 # seconds
+MQTT_TOPIC = "wipy/"
+
 ## LED
 pycom.heartbeat(False)
 GREEN = 0x001500
@@ -44,7 +48,6 @@ os.dupterm(uart)
 uart1 = machine.UART(1, baudrate=9600)
 
 buffer = []
-
 while True:
     data = uart1.read(32)  # read up to 32 bytes
     if data:
@@ -67,7 +70,6 @@ while True:
     if frame_len != 28:
         buffer = []
         continue
-
     frame = struct.unpack(">HHHHHHHHHHHHHH", bytes(buffer[4:]))
 
     pm10_standard, pm25_standard, pm100_standard, pm10_env, \
@@ -75,7 +77,6 @@ while True:
         particles_25um, particles_50um, particles_100um, skip, checksum = frame
 
     check = sum(buffer[0:30])
-
     if check != checksum:
         buffer = []
         continue
@@ -92,11 +93,11 @@ while True:
     # Print/publish the data
     print(data_json)
     try:
-        client.publish("wipy/", data_json)
+        client.publish(MQTT_TOPIC, data_json)
         pycom.rgbled(GREEN)
-        time.sleep(0.2)
+        time.sleep(0.3)
         pycom.rgbled(RED)
-        time.sleep(2)
+        time.sleep(TIME_BETWEEN_READINGS)
     except Exception as e:
         print(e)
         pass
