@@ -62,29 +62,33 @@ mqtt:
 
   sensor:
     - platform: mqtt
-      state_topic: "wipy/"
-    - platform: mqtt
       name: particles_03um
       state_topic: "wipy/"
       value_template: "{{ value_json.particles_03um }}"
+      unit_of_measurement: 03um
     - platform: mqtt
       name: particles_05um
       state_topic: "wipy/"
       value_template: "{{ value_json.particles_05um }}"
+      unit_of_measurement: 05um
     - platform: mqtt
       name: particles_10um
       state_topic: "wipy/"
       value_template: "{{ value_json.particles_10um }}"
+      unit_of_measurement: 10um
     - platform: mqtt
       name: particles_25um
       state_topic: "wipy/"
       value_template: "{{ value_json.particles_25um }}"
+      unit_of_measurement: 25um
     - platform: mqtt
       name: particles_50um
       state_topic: "wipy/"
       value_template: "{{ value_json.particles_50um }}"
+      unit_of_measurement: 50um
     - platform: mqtt
       name: particles_100um
       state_topic: "wipy/"
       value_template: "{{ value_json.particles_100um }}"
+      unit_of_measurement: 100um
 ```
