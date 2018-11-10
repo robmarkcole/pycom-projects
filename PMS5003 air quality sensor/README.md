@@ -99,3 +99,9 @@ mqtt:
 
 ## In use in the kitchen
 I get good readings with the sensor in the kitchen, below next to the toaster.
+
+<p align="center">
+<img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/toasting.jpg" width="500">
+</p>
+
+Analytics of the data are shown in [ha_data_analytics.ipynb](https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/ha_data_analytics.ipynb)
