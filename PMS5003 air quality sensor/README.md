@@ -92,3 +92,7 @@ mqtt:
       value_template: "{{ value_json.particles_100um }}"
       unit_of_measurement: 100um
 ```
+
+<p align="center">
+<img src="https://github.com/robmarkcole/pycom-projects/blob/master/PMS5003%20air%20quality%20sensor/ha_view.png" width="500">
+</p>
